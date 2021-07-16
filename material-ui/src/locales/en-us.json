@@ -1,0 +1,53 @@
+{
+  "en": "English",
+
+  "typeerror failed to fetch": "TypeError: Failed to fetch",
+
+  "unauthorized": "Unauthorized",
+
+  "success": "Success",
+  "error": "Error",
+
+  "ok": "Ok",
+  "cancel": "Cancel",
+  
+  "home": "Home",
+  "welcome": "Welcome",
+  "my repo": "My Repo",
+
+  "ui": "UI",
+  "done": "Done",
+  "setting": "Setting",
+  "language": "Language",
+
+  "account": "Account",
+  "log in or sign up": "Log In or Sign Up",
+  "sign up": "Sign Up",
+  "log in": "Log In",
+  "log out": "Log Out",
+  "email address": "Email Address",
+  "password": "Password",
+  "full name": "Full Name",
+  "remember me": "Rememver Me",
+  "required": "Required",
+  "confirm password": "Confirm password",
+  "email is not valid": "Email is not valid",
+  "password mismatch": "Password mismatch",
+  "email has already existed": "Email has already existed",
+  
+
+  "change password": "Change Password",
+  "old password": "Old Password",
+
+  "new folder": "New Folder",
+  "file upload": "File Upload",
+  "folder upload": "Folder Upload",
+  "payload too large": "Payload Too Large",
+  "insufficient storage": "Insufficient Storage",
+
+  "rename": "Rename",
+  "move to": "Move to",
+  "only file can be download": "Only file can be download",
+  "download": "Download",
+  "remove": "Remove"
+}

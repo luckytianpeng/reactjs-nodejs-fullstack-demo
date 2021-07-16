@@ -1,0 +1,54 @@
+{
+  "zhHant": "中文正體",
+
+  "typeerror failed to fetch": "網路錯誤",
+
+  "unauthorized": "未經授權",
+
+  "success": "成功",
+  "error": "錯誤",
+
+  "ok": "確定",
+  "cancel": "取消",
+  
+  "home": "首頁",
+  "welcome": "歡迎",
+  "my repo": "我的倉庫",
+
+  "ui": "用戶界面",
+  "done": "完成",
+  "setting": "設定",
+  "language": "語言",
+
+  "account": "賬號",
+  "log in or sign up": "登錄或注冊",
+  "sign up": "注冊",
+  "log in": "登入",
+  "log out": "登出",
+  "email address": "電子郵箱",
+  "password": "密碼",
+  "full name": "全名",
+  "remember me": "記住我",
+  "required": "必需",
+  "confirm password": "確認密碼",
+  "email is not valid": "無效的電子郵件",
+  "password mismatch": "密碼不匹配",
+  "email has already existed": "電子郵件地址已經存在",
+  "not implemented": "未實作的設定",
+  
+
+  "change password": "修改密碼",
+  "old password": "舊密碼",
+
+  "new folder": "新檔案夾",
+  "file upload": "上載檔案",
+  "folder upload": "上載檔案夾",
+  "payload too large": "有效負荷太大",
+  "insufficient storage": "存儲空間不足",
+
+  "rename": "重命名",
+  "move to": "移動",
+  "only file can be download": "僅檔案可下載",
+  "download": "下載",
+  "remove": "刪除"
+}

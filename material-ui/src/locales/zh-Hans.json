@@ -1,0 +1,53 @@
+{
+  "zhHans": "中文简体",
+
+  "typeerror failed to fetch": "网络失败",
+
+  "unauthorized": "未经授权",
+
+  "success": "成功",
+  "error": "失败",
+
+  "ok": "确定",
+  "cancel": "取消",
+  
+  "home": "主页",
+  "welcome": "欢迎",
+  "my repo": "我的仓库",
+
+  "ui": "用户界面",
+  "done": "完成",
+  "setting": "设置",
+  "language": "语言",
+
+  "account": "账号",
+  "log in or sign up": "登录或注册",
+  "sign up": "注册",
+  "log in": "登录",
+  "log out": "注销",
+  "email address": "电子邮箱",
+  "password": "密码",
+  "full name": "全名",
+  "remember me": "记住我",
+  "required": "必需",
+  "confirm password": "确认密码",
+  "email is not valid": "无效的电子邮件",
+  "password mismatch": "密码不匹配",
+  "email has already existed": "电子邮件已经存在",
+  
+
+  "change password": "修改密码",
+  "old password": "旧密码",
+
+  "new folder": "新文件夹",
+  "file upload": "上传文件",
+  "folder upload": "上传文件夹",
+  "payload too large": "有效负载太大",
+  "insufficient storage": "存储空间不足",
+
+  "rename": "重命名",
+  "move to": "移动",
+  "only file can be download": "仅文件可下载",
+  "download": "下载",
+  "remove": "删除"
+}
