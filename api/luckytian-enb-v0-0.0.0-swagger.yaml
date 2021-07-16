@@ -1,0 +1,556 @@
+openapi: 3.0.0
+info:
+  title: Enchanted Notebook
+  version: "0.0.0"
+  description: |
+    This is a draft of the API of Enchanted Notebook.
+  contact:
+    email: luckytianpeng@hotmail.com
+servers:
+  - url: 'https://192.168.1.8:8443/v0'
+tags:
+  - name: index
+    description: Hypermedia API
+  - name: users
+    description: Sing up, confirm, get and change info
+  - name: login
+  - name: logout
+  - name: filesystem
+    description: User's own files and directoris on server-side
+paths:
+  /:
+    get:
+      servers:
+        - url: 'https://192.168.1.8:8443/'
+          description: HATEOAS are not for specific version
+      tags:
+        - index
+      summary: Hypermedia as the Engine of Application State (HATEOAS)
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hateoas'
+  /users:
+    post:
+      tags:
+        - users
+      summary: Add a user with email, password and full name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 200
+                msg: success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 400
+                msg: Email is not valid
+        '409':
+          description: Confilic
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 409
+                msg: Email has already existed
+    get:
+      tags:
+        - users
+      summary: Get user's info
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 200
+                msg: success
+                data:
+                  fullName: Peng TIAN
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 404
+                msg: Not Found
+    put:
+      tags:
+        - users
+      summary: Change password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oldPassword:
+                  type: string
+                newPassword:
+                  type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 200
+                msg: success
+                data:
+                  fullName: Peng TIAN
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 400
+                msg: Not Found
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+  '/users/{uuid}':
+    get:
+      tags:
+        - users
+      summary: From confirmation email
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: uuid
+          in: path
+          description: User's UUID
+          required: true
+          schema:
+            type: string
+            example: f754eb6d-3357-4246-9629-643876239711
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 404
+                msg: Not Found
+  /login:
+    get:
+      tags:
+        - login
+      summary: Query. Have logged in?
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+    post:
+      tags:
+        - login
+      summary: Log in.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      security: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: enchanted-notebook=abcde12345; Path=/; HttpOnly
+
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+  /logout:
+    post:
+      tags:
+        - logout
+      summary: Log out
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 200
+                msg: success
+                data:
+                  fullName: Peng TIAN
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+  '/filesystem/tree/{directory}':
+    get:
+      tags:
+        - filesystem
+      summary: Like tree command in UNIX/LINUX system.
+      parameters:
+        - name: directory
+          in: path
+          required: true
+          schema:
+            type: string
+            example: ~/
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 200
+                msg: success
+                data:
+                  tree:
+                    path: '~'
+                    name: '~'
+                    children:
+                      - path: ~/avatar.jpg
+                        name: avatar.jpg
+                        size: 4783
+                        extension: .jpg
+                        type: file
+                      - path: ~/music
+                        name: music
+                        children: []
+                        size: 0
+                        type: directory
+                    size: 4783
+                    type: directory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+  '/filesystem/read/{file}':
+    get:
+      tags:
+        - filesystem
+      summary: Download file.
+      parameters:
+        - name: file
+          in: path
+          required: true
+          schema:
+            type: string
+            example: ~/avatar.js
+      responses:
+        '200':
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+  '/filesystem/rm':
+    post:
+      tags:
+        - filesystem
+      summary: Remove files or directories.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                path:
+                  type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 500
+                msg: Internal Server Error
+  '/filesystem/mv':
+    post:
+      tags:
+        - filesystem
+      summary: Move (rename) file or directory.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  type: string
+                dest:
+                  type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 500
+                msg: Internal Server Error
+  '/filesystem/mkdir':
+    post:
+      tags:
+        - filesystem
+      summary: Create directory.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                directory:
+                  type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 500
+                msg: Internal Server Error
+  '/filesystem/uploadfiles':
+    post:
+      tags:
+        - filesystem
+      summary: Upload files.
+      requestBody:
+        required: true
+        description: directory indicates where the files are saved to 
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                directory:
+                  type: string
+                  example: ~
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 401
+                msg: Unauthorized
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+              example:
+                code: 500
+                msg: Internal Server Error
+components:
+  schemas:
+    ResponseData:
+      type: object
+      required: [code, msg]
+      properties:
+        code:
+          type: integer
+          example: 200
+        msg:
+          type: string
+          example: OK
+        data:
+          type: object
+    Hateoas:
+      type: object
+      additionalProperties:
+        type: string
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          example: luckytianpeng@hotmail.com
+        password:
+          type: string
+          example: peng
+        fullName:
+          type: string
+          example: Peng TIAN
+  securitySchemes:
+    cookieAuth:         # arbitrary name for the security scheme; will be used in the "security" key later
+      type: apiKey
+      in: cookie
+      name: enchanted-notebook
+security:
+  - cookieAuth: []
