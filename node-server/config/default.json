@@ -1,7 +1,7 @@
 {
   "demo": true,
   "server": {
-    "domain": "https://127.0.0.1:6443/",
+    "domain": "https://127.0.0.1:8443/",
     "version": {
       "major": 0,
       "minor": 1,
