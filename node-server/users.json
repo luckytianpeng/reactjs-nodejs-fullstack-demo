@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "60bd7285af365259f47ae65a"
+  },
+  "uuid": "45443147-61fe-4b39-8eb6-6f5a1cd9bf65",
+  "email": "test@test.com",
+  "password": "098f6bcd4621d373cade4e832627b4f6",
+  "fullName": "Testor",
+  "locked": false,
+  "confirmed": true,
+  "__v": 0
+}]

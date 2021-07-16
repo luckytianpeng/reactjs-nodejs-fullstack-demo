@@ -1,0 +1,21 @@
+{
+  "demo": true,
+  "server": {
+    "domain": "https://127.0.0.1:6443/",
+    "version": {
+      "major": 0,
+      "minor": 1,
+      "patch": 0
+    },
+    "repoDir": "/repositories",
+    "limits": {
+      "fileSize": 33554432,
+      "storageSpaceSize": 67108864
+    }
+  },
+  "session": {
+    "name": "enchanted-notebook",
+    "resave": true,
+    "saveUninitialized": true
+  }
+}

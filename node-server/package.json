@@ -1,0 +1,32 @@
+{
+  "name": "node-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "config": "^3.3.6",
+    "cookie-parser": "~1.4.4",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "directory-tree": "^2.2.9",
+    "email-validator": "^2.0.4",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "get-folder-size": "^3.1.0",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "md5": "^2.3.0",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0",
+    "mongoose": "^5.12.13",
+    "morgan": "~1.9.1",
+    "nodemailer": "^6.6.1",
+    "session-file-store": "^1.5.0",
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0"
+  }
+}
