@@ -1,0 +1,9 @@
+{
+  "chromeWebSecurity": false,
+  "baseUrl": "https://149.28.173.176",
+
+  "video": true,
+  "videoCompression": 0,
+  "videosFolder": "cypress/videos",
+  "videoUploadOnPasses": true
+}
