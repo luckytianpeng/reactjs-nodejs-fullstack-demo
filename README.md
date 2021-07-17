@@ -1,9 +1,10 @@
 # reactjs-nodejs-fullstack-demo
 A demonstration of full stack development using ract.js and node.js. Seems like a simple Google Drive.
-
+  
+  
 ## Online Demonstration
 
-The temporary demo URLs - [https://149.28.173.176](https://149.28.173.176).  
+The temporary demo URLs - [https://149.28.173.176](https://149.28.173.176).(A vultr cloud computer: 1 CPU, 1GB RAM)  
 Email: test@test.com  
 Password: test  
 
@@ -11,10 +12,52 @@ You may run into the NET::ERR_CERT_AUTHORITY_INVALID error because of my self-si
 
 
 https://user-images.githubusercontent.com/6571028/126020805-5c77a56f-c1f0-49b8-bdde-3dfb04f80499.mp4
+  
+  
+## Introduction
+### Requirements
+- Web: adapt to any device
+- Resposive design: desktop, tablet and phone
+- Authentication
+- Multi-Language Support
+### Tech Stack
+- Node.js
+- React
+- MongoDB (SQL vs NoSQL - the natural shape of your dataset)
+### Design
+- prototyping:  
 
+  mobile view:  
+  ![mobile view](https://user-images.githubusercontent.com/6571028/126050478-b8e51937-a6a2-494f-a5c5-57a9d7d05222.png)
+  
+  pc view:  
+  ![pc view](https://user-images.githubusercontent.com/6571028/126050481-3cc41334-0303-4c7d-b5dc-2406a2fa099f.png)
 
+- [Materal Design](https://material.io/)
+- API - OpenAPI 3:
+  Swagger:  
+  ![enb-v0 _ 0 0 0 _](https://user-images.githubusercontent.com/6571028/126050520-db51f75f-5324-4cc2-ba9f-6df57d0d89d3.png)
+  Postman:  
+  ![postman](https://user-images.githubusercontent.com/6571028/126050526-a31eb84c-0fd9-4029-be4d-51ad18c066d0.png) 
 
-## Development
+- Development
+  + Frontend: React, MobX, Material-UI ...
+  + Backend: Node.js, Express.js ...
+
+- Testing
+  + React Testing Library
+  + Cypress
+
+- Deployment
+  + Debian
+  + Nginx
+
+- Maintenance
+  + PM2:  
+    ![postman](https://user-images.githubusercontent.com/6571028/126050760-63bdf7f3-45ba-4d26-8c75-91180d065b2c.png)
+  
+  
+## Usage
 
 ### MongoDB
 
@@ -120,3 +163,4 @@ testing$ npm run cypress:run
 testing$ npm run cypress:open
 ```
 
+Enjoy it!
