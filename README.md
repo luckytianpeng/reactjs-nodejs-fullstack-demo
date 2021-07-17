@@ -1,11 +1,16 @@
 # reactjs-nodejs-fullstack-demo
-A demonstration of full stack development using ract.js and node.js
+A demonstration of full stack development using ract.js and node.js. Seems like a simple Google Drive.
 
 ## Online Demonstration
 
-The temporary URLs - [https://149.28.173.176](https://149.28.173.176) .
+The temporary demo URLs - [https://149.28.173.176](https://149.28.173.176).  
+Email: test@test.com  
+Password: test  
 
-I generated a self-signed SSl Certificate, so you  may run into the ERR_CERT_AUTHORITY_INVALID. Accept it, please.
+You may run into the NET::ERR_CERT_AUTHORITY_INVALID error because of my self-signed certificate. Accept it, please.  
+
+
+https://user-images.githubusercontent.com/6571028/126020805-5c77a56f-c1f0-49b8-bdde-3dfb04f80499.mp4
 
 
 
@@ -18,8 +23,6 @@ Import data:
 ```bash
 mongoimport --db development_db --collection users --file node-server/users.json --jsonArray
 ```
-
-
 
 ### Environment Variables
 
